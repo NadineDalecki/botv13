@@ -1,0 +1,22 @@
+ "VRL": {
+        "guildId": "439427299675209729",
+        "prefix": "?",
+        "adminRoles": [
+            "447791613926834176"
+        ],
+        "logChannel": "566294428453699584",
+        "guildLogs": true,
+        "deletedMessages": true,
+        "status": "dnd",
+        "activity": {
+            "name": "for a new job 😔",
+            "type": "WATCHING",
+            "url": "https://www.twitch.tv/vrchallenger"
+        },
+        "roles": {
+            "lft": "549925842646597651",
+            "Scrimmer": "509787093208399872",
+            "Climbey": "428612225134231552"
+        },
+        "muteRole": ""
+    },

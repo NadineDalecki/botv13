@@ -1,0 +1,76 @@
+else if (answer.intent === "Register | Coaching") {
+        message.reply(answer.response);
+        if (answer.result[0].queryResult.allRequiredParamsPresent === true) {
+          const embed = new Discord.MessageEmbed()
+            .setColor("#DD1A61")
+            .addField(
+              "Team Captain",
+              `<@${message.author.id}> | ${message.author.tag}`
+            )
+            .addField(
+              "Team",
+              `${answer.result[0].queryResult.parameters.fields.teamlink.stringValue}`
+            )
+            .addField(
+              "Region",
+              `${answer.result[0].queryResult.parameters.fields.region.stringValue}`
+            )
+            .addField(
+              "Level",
+              `${answer.result[0].queryResult.parameters.fields.level.numberValue}`
+            )
+            .addField(
+              "Topics",
+              `${answer.result[0].queryResult.parameters.fields.content.stringValue}`
+            );
+
+          client.channels.cache
+            .get("537419656181448716")
+            .send(embed)
+            .then(async msg => {
+              await msg.react("✅");
+              await msg.react("⛔");
+              const filter = (reaction, user) => {
+                return (
+                  ["✅", "⛔"].includes(reaction.emoji.name) &&
+                  user.id &&
+                  !user.bot
+                );
+              };
+              msg
+                .awaitReactions(filter, { max: 1 })
+                .then(collected => {
+                  const reaction = collected.first();
+                  if (reaction.emoji.name === "✅") {
+                    if (
+                      answer.result[0].queryResult.parameters.fields.EchoVR
+                        .stringValue === "Echo Arena"
+                    ) {
+                      client.channels.cache
+                        .get("709224142586642452")
+                        .send(embed);
+                      message.reply(
+                        "Your coaching request was approved and posted in the <#709224142586642452> channel!"
+                      );
+                    } else {
+                      client.channels.cache
+                        .get("709510954534043668")
+                        .send(embed);
+                      message.reply(
+                        "Your coaching request was approved and posted in the <#709510954534043668> channel!"
+                      );
+                    }
+                  } else {
+                    client.channels.cache
+                      .get("537419656181448716")
+                      .send(
+                        "Request not approved. Please contact the player to tell him what he needs to change."
+                      );
+                  }
+                })
+                .catch(collected => {
+                  console.log("no one reacted");
+                });
+            });
+        }
+      } 

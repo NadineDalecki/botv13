@@ -1,0 +1,93 @@
+=================== functions.js ===================
+
+RoleAdd: async function(client, reaction, user, id) {
+    console.log(client.user.username);
+    console.log(reaction.message.content);
+    console.log(reaction.message.channel.id);
+
+    if (reaction.partial) {
+      try {
+        await reaction.fetch();
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    }
+    const emojiId = reaction.emoji.id.toString();
+    if (!user.bot && reaction.message.id === id) {
+      if (
+        set[client.user.username].rrRoles.hasOwnProperty(emojiId) ||
+        set[client.user.username].rrRoles.hasOwnProperty(reaction.emoji.name)
+      ) {
+        reaction.message.guild
+          .member(user)
+          .roles.add(set[client.user.username].rrRoles[emojiId].role);
+      }
+    }
+    if (set[client.user.username].rrAuto) {
+      reaction.message.guild
+        .member(user)
+        .roles.add(set[client.user.username].rrAuto);
+    }
+  },
+  RoleRemove: async function(client, reaction, user, id) {
+    if (reaction.partial) {
+      try {
+        await reaction.fetch();
+      } catch (error) {
+        console.log(error);
+        return;
+      }
+    }
+    const emojiId = reaction.emoji.id.toString();
+    if (!user.bot && reaction.message.id === id) {
+      if (
+        set[client.user.username].rrRoles.hasOwnProperty(emojiId) ||
+        set[client.user.username].rrRoles.hasOwnProperty(reaction.emoji.name)
+      ) {
+        reaction.message.guild
+          .member(user)
+          .roles.remove(set[client.user.username].rrRoles[emojiId].role);
+      }
+    }
+  },
+
+=================== index.js ===================
+
+ client.on("messageReactionAdd", async (reaction, user) => {
+    if (set[client.user.username].rrRolesFunction == true) {
+      functions.RoleAdd(
+        client,
+        reaction,
+        user,
+        set[client.user.username].rrMessageId
+      );
+    } else if (set[client.user.username].rrScheduler == true) {
+      await functions.Scheduler(client, reaction, user);
+    }
+  });
+
+  client.on("messageReactionRemove", async (reaction, user) => {
+    if (set[client.user.username].rrRolesFunction == true) {
+      functions.RoleRemove(
+        client,
+        reaction,
+        user,
+        set[client.user.username].rrMessageId
+      );
+    } else if (set[client.user.username].rrScheduler == true) {
+      await functions.Scheduler(client, reaction, user);
+    }
+  });
+
+  =================== settings.json ===================
+
+  "rrRolesFunction": false,
+        "rrMessageId": "679385800412233736",
+        "rrRoles": {
+            "551077554543394827": {
+                "name": "Echo Arena",
+                "role": "446981661368909824"
+            }
+                    },
+                     "rrAuto": "724966510614937622",

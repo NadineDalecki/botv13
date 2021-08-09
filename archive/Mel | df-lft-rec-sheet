@@ -1,0 +1,196 @@
+else if (answer.intent === "Sheet | Looking for Team") {
+        if (answer.result[0].queryResult.allRequiredParamsPresent === false) {
+          message.reply(answer.response);
+        } else if (
+          answer.result[0].queryResult.allRequiredParamsPresent === true
+        ) {
+          message.reply(answer.response);
+          const GetData = await functions.SpreadsheetGET(
+            "1qqnjDjkd7SYutlk8n5WSpPKFv_gihXPd6gvjZO1_fNk",
+            email,
+            key
+          );
+          let playerRow = GetData.rows.filter(
+            row => row.Id == message.author.id
+          );
+          if (playerRow[0]) {
+            const positions = answer.result[0].queryResult.parameters.fields.position.listValue.values.map(
+              position => position.stringValue
+            );
+            playerRow[0].Position = positions.join(", ");
+            playerRow[0].Region =
+              answer.result[0].queryResult.parameters.fields.region.stringValue;
+            playerRow[0].League_Cup =
+              answer.result[0].queryResult.parameters.fields.cup_type.stringValue;
+            playerRow[0].Profile_Link =
+              answer.result[0].queryResult.parameters.fields.profile_link.stringValue;
+            playerRow[0].Level =
+              answer.result[0].queryResult.parameters.fields.level.numberValue;
+            playerRow[0].Date = new Date().toString().substring(4, 25);
+            await playerRow[0].save();
+          } else {
+            const positions = answer.result[0].queryResult.parameters.fields.position.listValue.values.map(
+              position => position.stringValue
+            );
+            const data = [
+              {
+                Id: message.author.id,
+                Date: new Date().toString().substring(4, 25),
+                Region:
+                  answer.result[0].queryResult.parameters.fields.region
+                    .stringValue,
+                League_Cup:
+                  answer.result[0].queryResult.parameters.fields.cup_type
+                    .stringValue,
+                Discord: message.author.tag,
+                Profile_Link:
+                  answer.result[0].queryResult.parameters.fields.profile_link
+                    .stringValue,
+                Level:
+                  answer.result[0].queryResult.parameters.fields.level
+                    .numberValue,
+                Position: positions.join(", ")
+              }
+            ];
+            const GetData = await functions.SpreadsheetPOST(
+              "1qqnjDjkd7SYutlk8n5WSpPKFv_gihXPd6gvjZO1_fNk",
+              email,
+              key,
+              data
+            );
+          }
+        }
+      } else if (answer.intent === "Sheet | Looking for Team - yes") {
+        const GetData = await functions.SpreadsheetGET(
+          "1qqnjDjkd7SYutlk8n5WSpPKFv_gihXPd6gvjZO1_fNk",
+          email,
+          key
+        );
+        let playerRow = GetData.rows.filter(row => row.Id == message.author.id);
+        if (playerRow[0]) {
+          playerRow[0].Description = message.cleanContent;
+          await playerRow[0].save();
+          message.reply(answer.response);
+        }
+      }
+      //=========================================================================================================
+      else if (answer.intent === "Sheet | Delete LFT - yes") {
+        const GetData = await functions.SpreadsheetGET(
+          "1qqnjDjkd7SYutlk8n5WSpPKFv_gihXPd6gvjZO1_fNk",
+          email,
+          key
+        );
+        try {
+          let EntrytoDelete = GetData.rows.filter(
+            row => row.Id == message.author.id
+          );
+          message.reply("Alright, I deleted your entry!");
+          await EntrytoDelete[0].delete();
+        } catch (e) {
+          message.reply(
+            "Sorry I could not find your entry. If there are any issues please contact na_da#9999"
+          );
+        }
+      }
+      //=========================================================================================================
+      else if (answer.intent === "Sheet | Recruiting") {
+        if (answer.result[0].queryResult.allRequiredParamsPresent === false) {
+          message.reply(answer.response);
+        } else if (
+          answer.result[0].queryResult.allRequiredParamsPresent === true
+        ) {
+          message.reply(answer.response);
+          const GetData = await functions.SpreadsheetGET(
+            "1-X6Sy9Mi5pnGTFxZAMnIOrtVu7aKC-G__b4kOIm4tVs",
+            email,
+            key
+          );
+          let playerRow = GetData.rows.filter(
+            row => row.Id == message.author.id
+          );
+          if (playerRow[0]) {
+            const positions = answer.result[0].queryResult.parameters.fields.position.listValue.values.map(
+              position => position.stringValue
+            );
+            playerRow[0].Position = positions.join(", ");
+            playerRow[0].League_Cup =
+              answer.result[0].queryResult.parameters.fields.cup_type.stringValue;
+            playerRow[0].Region =
+              answer.result[0].queryResult.parameters.fields.region.stringValue;
+            playerRow[0].Profile_Link =
+              answer.result[0].queryResult.parameters.fields.profile_link.stringValue;
+            playerRow[0].Date = new Date().toString().substring(4, 25);
+            await playerRow[0].save();
+          } else {
+            const positions = answer.result[0].queryResult.parameters.fields.position.listValue.values.map(
+              position => position.stringValue
+            );
+            const data = [
+              {
+                Id: message.author.id,
+                Date: new Date().toString().substring(4, 25),
+                Region:
+                  answer.result[0].queryResult.parameters.fields.region
+                    .stringValue,
+                League_Cup:
+                  answer.result[0].queryResult.parameters.fields.cup_type
+                    .stringValue,
+                Discord: message.author.tag,
+                Profile_Link:
+                  answer.result[0].queryResult.parameters.fields.profile_link
+                    .stringValue,
+                Position: positions.join(", ")
+              }
+            ];
+            const GetData = await functions.SpreadsheetPOST(
+              "1-X6Sy9Mi5pnGTFxZAMnIOrtVu7aKC-G__b4kOIm4tVs",
+              email,
+              key,
+              data
+            );
+          }
+        }
+      } else if (answer.intent === "Sheet | Recruiting - yes") {
+        const GetData = await functions.SpreadsheetGET(
+          "1-X6Sy9Mi5pnGTFxZAMnIOrtVu7aKC-G__b4kOIm4tVs",
+          email,
+          key
+        );
+        let playerRow = GetData.rows.filter(row => row.Id == message.author.id);
+        if (playerRow[0]) {
+          playerRow[0].Description = message.cleanContent;
+          await playerRow[0].save();
+          message.reply(answer.response);
+        }
+      }
+      //=========================================================================================================
+      else if (answer.intent === "Sheet | Delete REC - yes") {
+        const GetData = await functions.SpreadsheetGET(
+          "1-X6Sy9Mi5pnGTFxZAMnIOrtVu7aKC-G__b4kOIm4tVs",
+          email,
+          key
+        );
+        try {
+          let EntrytoDelete = GetData.rows.filter(
+            row => row.Id == message.author.id
+          );
+          message.reply("Alright, I deleted your entry!");
+          await EntrytoDelete[0].delete();
+        } catch (e) {
+          message.reply(
+            "Sorry I could not find your entry. If there are any issues please contact na_da#9999"
+          );
+        }
+      }
+        //=========================================================================================================
+      else if (
+        (answer.intent === "Register | Event" ||
+          answer.intent === "Sheet | Looking for Team" ||
+          answer.intent === "Sheet | Recruiting") &&
+        message.channel.type != "dm"
+      ) {
+        message.reply(
+          "Happy to help. Let's continue this conversation in a DM..."
+        );
+        message.author.send(answer.response);
+      }
