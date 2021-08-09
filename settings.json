@@ -1,0 +1,131 @@
+{
+    "Affen": {
+        "guildId": "387015404092129282",
+        "prefix": "?",
+        "adminRoles": [
+            "473863737254871060",
+            "497406496108183553",
+            "425225020382642176",
+            "855095019568627765"
+        ],
+        "logChannel": "718176504437276682",
+        "status": "dnd",
+        "activity": {
+            "name": "shit talking",
+            "type": "COMPETING",
+            "url": "https://discord.com"
+        },
+        "JoinDM": true,
+        "JoinDMText": "**Welcome to Echo Arena EU Teams! This is a *closed-off private space from NA players*, so don’t mention this server or talk about its contents. READ THE WELCOME CHANNEL! **Be respectful**, but as this is a competitive server some drama/salt/banter is expected between teams and players.\n\n**MIXED SCRIMS**\n\nMixed scrims are fun games with random players, kind of like public matches but with the same group playing each other in a private match. A mixed scrim group will keep playing for as long as they feel like it (often 1-2 hours), with players dropping out and new players joining in.\n\n**Don’t join a mixed scrim unless you can play for at least 30 minutes, don’t ask for a mixed scrim unless you can play for about an hour. For more info about scrims and how we organize them check #scrim-info",
+        "roles": {
+            "lft": "549925842646597651",
+            "Scrimmer": "509787093208399872",
+            "Climbey": "428612225134231552",
+            "1v1": "869856554126565377"
+        }
+    },
+    "Bane": {
+        "spreadsheetID": "1EUd3czTty60S7WhFn9Y5leOtH0lOu2LhLEvkQ62eE50",
+        "guildId": "428667403950620679",
+        "prefix": "?",
+        "adminRoles": [
+            "449000869413912586",
+            "717548073852731462",
+            "425225020382642176"
+        ],
+        "logChannel": "718176504437276682",
+        "status": "idle",
+        "activity": {
+            "name": "POPULATION:ONE",
+            "type": "COMPETING",
+            "url": "https://discord.com"
+        }
+    },
+    "Itsy": {
+        "spreadsheetID": "1WwEw74tAaqXjza58SDB2E42aWOLuehxYvJ-8eBrSv6U",
+        "guildId": "610545116494430234",
+        "prefix": "?",
+        "adminRoles": [
+            "677015339120328704",
+            "425225020382642176"
+        ],
+        "logChannel": "744152267912904735",
+        "status": "online",
+        "activity": {
+            "name": "to your ideas 💡",
+            "type": "LISTENING",
+            "url": "https://www.twitch.tv/"
+        }
+    },
+    "KVN": {
+        "guildId": "707307751033798666",
+        "prefix": "?",
+        "adminRoles": [
+            "724966816056606780",
+            "763833830233866291"
+        ],
+        "logChannel": "718176504437276682",
+        "status": "online",
+        "activity": {
+            "name": "the alpha testers",
+            "type": "WATCHING",
+            "url": "https://www.twitch.tv/"
+        }
+    },
+    "Mel": {
+        "spreadsheetID": "1b-2t41LO_U5j8gJfxPS_rdg4Y8kINwMgSqUKpNdf4RE",
+        "guildId": "326412222119149578",
+        "prefix": "?",
+        "adminRoles": [
+            "151759779016998913",
+            "702591687096270848",
+            "425225020382642176"
+        ],
+        "logChannel": "718176504437276682",
+        "status": "online",
+        "activity": {
+            "name": "to your questions ❓",
+            "type": "LISTENING",
+            "url": "https://www.twitch.tv/echoarena_vrml"
+        },
+        "muteRole": "748631446217818123"
+    },
+    "Mo": {
+        "guildId": "424911215714631690",
+        "prefix": "!",
+        "adminRoles": [
+            "425225020382642176"
+        ],
+        "logChannel": "718176504437276682",
+        "status": "dnd"
+    },
+    "Py": {
+        "guildId": "861208697274630164",
+        "prefix": "?",
+        "adminRoles": [
+            "861288359702560788",
+            "425225020382642176"
+        ],
+        "status": "online",
+        "activity": {
+            "name": "to your questions ❓",
+            "type": "LISTENING",
+            "url": "https://www.twitch.tv/watchvrsn"
+        }
+    },
+    "TG Bot": {
+        "guildId": "421618914166833152",
+        "prefix": "?",
+        "adminRoles": [
+            "647068080908009472",
+            "421641048155226113"
+        ],
+        "logChannel": "718176504437276682",
+        "status": "online",
+        "activity": {
+            "name": "in Zero Gravity",
+            "type": "COMPETING",
+            "url": "https://www.twitch.tv/"
+        }
+    }
+}

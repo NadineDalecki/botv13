@@ -1,0 +1,32 @@
+{
+  "name": "A-bot",
+  "version": "999.0.0",
+  "description": "A friendly bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "16.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "nada",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "dependencies": {
+    "@google-cloud/dialogflow": "^4.1.4",
+    "axios": "^0.21.1",
+    "discord.js": "^13.0.1",
+    "express": "^4.17.1",
+    "giphy-api": "^2.0.2",
+    "google-spreadsheet": "^3.1.15",
+    "googleapis": "^83.0.0",
+    "node-schedule": "^2.0.0"
+  }
+}
